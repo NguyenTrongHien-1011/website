@@ -1,0 +1,40 @@
+{
+  "name": "dacs1",
+  "version": "1.0.0",
+  "description": "Website bán giày thể thao ",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "header": "node-sass --w src/resources/scss/header.scss src/public/css/header.css",
+    "home": "node-sass --w src/resources/scss/home.scss src/public/css/home.css",
+    "product": "node-sass --w src/resources/scss/product.scss src/public/css/product.css",
+    "footer": "node-sass --w src/resources/scss/footer.scss src/public/css/footer.css",
+    "show": "node-sass  --w src/resources/scss/show.scss src/public/css/show.css",
+    "contact": "node-sass --w src/resources/scss/contact.scss src/public/css/contact.css",
+    "admin": "node-sass --w src/resources/scss/admin.scss src/public/css/admin.css",
+    "about": "node-sass --w src/resources/scss/about.scss src/public/css/about.css",
+    "location": "node-sass --w src/resources/scss/location.scss src/public/css/location.css",
+    "login": "node-sass --w src/resources/scss/login.scss src/public/css/login.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "website",
+    "dác1",
+    "nodejs"
+  ],
+  "author": "Nguyễn Trọng Hiển",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.12.3",
+    "mongoose-delete": "^0.5.3",
+    "mongoose-slug-generator": "^1.0.4"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.7"
+  }
+}

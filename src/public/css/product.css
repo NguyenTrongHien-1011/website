@@ -1,0 +1,237 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+* {
+  margin: 0;
+  padding: 0; }
+
+a {
+  text-decoration: none; }
+
+.product {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff; }
+
+.product .image {
+  width: 100%;
+  height: 300px;
+  background: url(https://thumbs.dreamstime.com/z/image-text-shoes-illustration-hanging-shoelaces-78720648.jpg);
+  background-size: 100% 130%;
+  background-repeat: no-repeat; }
+
+@keyframes animate {
+  to {
+    left: 100%; } }
+
+.product .device {
+  width: 100%;
+  height: 200px;
+  background: #fff; }
+
+.product .device .top {
+  width: 100%;
+  height: 30px;
+  background: #CC0000; }
+
+.product .device .bottom {
+  width: 100%;
+  height: 170px;
+  background: black;
+  color: #fdfdfd; }
+
+.device .bottom h2 {
+  margin-left: 15%;
+  color: #CC0000;
+  font-size: 34px;
+  position: relative;
+  margin-bottom: 20px; }
+
+.device .bottom h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 7%;
+  height: 3px;
+  background: #CC0000;
+  color: #CC0000; }
+
+.device .bottom p {
+  margin-left: 15%;
+  width: 1050px; }
+
+.product .content {
+  width: 1050px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #f8f8f8;
+  box-shadow: 1px 2px 5px white; }
+
+.product .box {
+  width: 200px;
+  height: 350px;
+  overflow: hidden;
+  display: inline-block;
+  margin-left: 50px;
+  margin-top: 20px;
+  position: relative;
+  top: 10%; }
+
+.box .brand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; }
+
+.box .brand:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: gray;
+  top: 30px;
+  left: 0px; }
+
+.content .box .size {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin: 20px 0;
+  position: absolute;
+  top: 5%;
+  left: 0; }
+
+.content .box .size span {
+  margin-right: 0px;
+  font-size: 13px;
+  width: 100%; }
+
+.content .box .size .cricle {
+  width: 40px;
+  height: 20px;
+  border-radius: 50%;
+  background: #CC0000;
+  text-align: center;
+  margin: 0 5px;
+  color: #fff; }
+
+.box .img {
+  position: relative;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  transition: 0.5s; }
+
+.box .img img {
+  width: 100%;
+  height: 100%; }
+
+.box:hover .img {
+  opacity: 0.5; }
+
+.box:hover .addtocard {
+  position: absolute;
+  right: 45px;
+  opacity: 1; }
+
+.box:hover .view {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateX(250px);
+  opacity: 1; }
+
+.box .img img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.box .name {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  font-size: 15px;
+  height: 42px;
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; }
+
+.box .addtocard {
+  position: absolute;
+  right: -200px;
+  top: 55%;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  background: #CC0000;
+  color: #fff;
+  border-radius: 30px; }
+
+.box .info a {
+  text-decoration: none; }
+
+.box .info .view {
+  position: absolute;
+  left: -200px;
+  top: 40%;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  transition: 1s;
+  color: #fff;
+  background: #CC0000;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.box .info .view:hover {
+  background: #fff;
+  color: #CC0000; }
+
+.box .info .addtocard:hover {
+  background: #fff;
+  color: #CC0000; }
+
+.box .price {
+  position: absolute;
+  bottom: 30px;
+  right: -160px;
+  width: 100%; }
+
+.box .img:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: gray;
+  bottom: -60px;
+  left: 0px; }
+
+@media (max-width: 992px) {
+  body {
+    width: 100%; }
+  .product {
+    width: 100%;
+    margin: 0;
+    padding: 0; }
+  .product .content {
+    width: 100%; }
+  .product .device {
+    width: 100%;
+    height: 100px; }
+  .device .bottom p.txt {
+    visibility: hidden; } }

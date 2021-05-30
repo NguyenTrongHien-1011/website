@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ATPro Admin</title>
+      <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+	<!-- Import lib -->
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- End import lib -->
+
+
+	<link rel="stylesheet" type="text/css" href="/css/admin.css">
+</head>
+<body>
+	<div class="admin">
+			<div class="wrapper">
+			<div class="row">
+				<div class="col-3 col-m-6 col-sm-6">
+					<a  href="#product" style="text-decoration: none;">
+					<div class="counter bg-primary">
+						<p>
+							<i class="fas fa-tasks"></i>
+						</p>
+						<h3>100+</h3>
+						<p>My products</p>
+					</div>
+					</a>
+					
+				</div>
+				<div class="col-3 col-m-6 col-sm-6">
+					<a  href="#add" style="text-decoration: none;">
+					<div class="counter bg-warning">
+						<p>
+							<i class="fas fa-spinner"></i>
+						</p>
+						<h3>100+</h3>
+						<p>Add product</p>
+					</div>
+					</a>
+					
+				</div>
+				<div class="col-3 col-m-6 col-sm-6">
+					<a  href="#edit" style="text-decoration: none;">
+						<div class="counter bg-success">
+						<p>
+							<i class="fas fa-check-circle"></i>
+						</p>
+						<h3>100+</h3>
+						<p>Edit product</p>
+					</div>
+					</a>
+					
+				</div>
+				<div class="col-3 col-m-6 col-sm-6">
+					<a  href="#delete" style="text-decoration: none;">
+						<div class="counter bg-danger">
+						<p>
+							<i class="fas fa-bug"></i>
+						</p>
+						<h3>{{deleteCount}}</h3>
+						<p>Product deleted</p>
+					</div>
+					</a>
+				</div>
+			</div>
+		</div>	
+			{{!-- end row 1 --}}
+		<div class="content">
+			<div class="left">
+				<div id="product" style="margin-left: 50px;">
+					<div class="card">
+						<div class="card-header">
+							<h3>
+								My product
+							</h3>
+							<i class="fas fa-ellipsis-h"></i>
+						</div>
+						<div class="card-content">
+							<table class="tb">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Name product</th>
+										<th scope="col">Price</th>
+										<th scope="col" colspan="2" style="text-align: center;">Time create</th>
+									</tr>
+								</thead>
+								{{#each products}}
+									<tr>
+										<th scope="row">{{sum @index 1}}</th>
+										<td>{{this.name}}</td>
+										<td>{{this.price}}$</td>
+										<td>@{{this.createdAt}}</td>
+										<td>
+										<a href="/admin/{{this._id}}" class="btn btn-link">Edit</a>
+										<a  href="" class="btn btn-link" data-toggle="modal" data-target="#deleteProduct" data-id="{{this._id}}">Delete</a>
+										</td>
+									</tr>
+								{{/each}}
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>	
+				{{!-- ende left  --}}
+			<div class="right">
+				<div class="box">
+					<div class="pr1" id="add" style="width: 550px;margin-left: 30px;">
+							<div class="card">
+								<div class="card-header">
+									<h3>
+										Add new Product
+									</h3>
+									<i class="fas fa-ellipsis-h"></i>
+								</div>
+							<div class="card-content">
+								<form  method="POST" action="/products/store">
+									<div class="inputBox">
+										<label for="">Name</label>
+										<input type="text" name="name">
+										
+									</div>
+									<div class="inputBox">
+										<label for="">Image</label>
+										<input type="text" name="image">
+										
+									</div>
+									<div class="inputBox">
+										<label for="">Brand</label>
+										<input type="text" name="brand">
+										
+									</div>
+									<div class="inputBox">
+										<label for="">Price</label>
+										<input type="text" name="price">
+									
+									</div>
+									<div class="inputBox">
+										<label for="">description</label>
+									<textarea name="Description" id="" ></textarea>
+									
+									</div>
+				
+									<input type="submit" value="Create" style="margin: 30px 0 10px 50%">
+							</form>
+							</div>
+						</div>	
+						{{!-- end pr1 --}}
+						<div class="pr2" id="edit" style="width: 550px;margin-top: 10px;" id="delete">
+							<div class="card">
+								<div class="card-header">
+									<h3>
+										Edit product
+									</h3>
+									<i class="fas fa-ellipsis-h"></i>
+								</div>
+								<div class="card-content">
+										<form  method="POST" action="/products/{{productEdit._id}}?_method=PUT">
+									<div class="inputBox">
+										<label for="">Name</label>
+										<input type="text" name="name" id="name" value="{{productEdit.name}}">
+									</div>
+									<div class="inputBox">
+										<label for="">Image</label>
+										 <input type="text" name="image"  value="{{productEdit.image}}">
+									</div>
+									<div class="inputBox">
+										<label for="">Brand</label>
+										 <input type="text" name="brand"  value="{{productEdit.brand}}">
+									</div>
+									<div class="inputBox">
+										<label for="">Price</label>
+										 <input type="text" name="price"  value="{{productEdit.price}}">
+									</div>
+									<div class="inputBox">
+										<label for="">Description</label>
+									 	<textarea name="description" id="" >{{productEdit.description}}</textarea>
+									</div>
+									<input type="submit" value="Edit" style="margin: 30px 0 10px 50%">
+							</form>
+								</div>
+							</div>
+						</div>		
+						<div class="pr3" style="width: 550px;margin-top: 10px;" id="delete">
+							<div class="card">
+								<div class="card-header">
+									<h3>
+										Product deleted
+									</h3>
+									<i class="fas fa-ellipsis-h"></i>
+								</div>
+								<div class="card-content">
+									<table>
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Name product</th>
+												<th scope="col">Price</th>
+				
+											</tr>
+										</thead>
+										{{#each productDelete}}
+											<tr>
+												<th scope="row">{{sum @index 1}}</th>
+												<td>{{this.name}}</td>
+												<td>{{this.price}}$</td>
+												<td>
+													<a href="" class="btn btn-link btnRestore" data-id="{{this._id}}">Restore</a>
+													<a  href="" class="btn btn-link" data-toggle="modal" data-target="#deleteForever" data-id="{{this._id}}">Delete</a>
+												</td>
+											</tr>
+
+										{{/each}}
+									</table>
+								</div>
+							</div>
+						</div>		
+				</div>
+					{{!-- end box 	 --}}
+				</div>	
+				{{!-- end right  --}}
+				
+		</div>	
+	
+	</div>
+	
+{{!--Confirm delete COurse--}}
+<div class="modal" id="deleteProduct"  tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Deleted products will be moved to the trash</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete" type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cencel</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<form name="delete-form" method="POST"></form>	
+
+ 
+
+{{!--Confirm delete COurse--}}
+<div class="modal" id="deleteForever"  tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Data will not be recoverable</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-product" type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <form name="restore-form" method="POST"></form>
+ <form name="delete-forever-form" method="POST"></form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        var deleteForm = document.forms['delete-form'];
+        var productID;
+        var btnDelete= document.getElementById('btn-delete');
+            $('#deleteProduct').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) ;
+            productID = button.data('id');
+    })
+        
+        btnDelete.onclick = function() {
+        deleteForm.action = '/products/' + productID  + '?_method=DELETE' 
+        deleteForm.submit();
+        }
+
+        
+})
+
+</script>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var deleteForeverForm = document.forms['delete-forever-form'];
+        var productID;
+        var btnDeleteProduct = document.getElementById('btn-delete-product');
+            $('#deleteForever').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) ;
+            productID = button.data('id');
+    })
+
+         btnDeleteProduct.onclick = function() {
+        deleteForeverForm.action = '/products/' + productID  + '/force?_method=DELETE' 
+        deleteForeverForm.submit();
+        }
+
+
+        var restoreForm = document.forms['restore-form'];
+        var Restorebtn = $('.btnRestore');
+          Restorebtn.click(function(e) {
+              e.preventDefault();
+              var productID = $(this).data('id');
+               restoreForm.action = '/products/' + productID  + '/restore?_method=PATCH';
+              restoreForm.submit();
+            
+      });
+});
+
+</script>
+	<!-- end main content -->
+	   
+             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  			  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   			 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

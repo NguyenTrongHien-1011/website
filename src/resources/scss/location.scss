@@ -1,0 +1,115 @@
+$color: #fff;
+$bgred: #CC0000;
+.container {
+
+    min-height: 100vh;
+
+}
+.img {
+    width :100%;
+    height: 300px;
+    background: url(https://www.toshiba.com/taes/cms_images/contact-us.jpg);
+    background-size: 130% 100%;
+}
+.img::after {
+    content: '';
+    position: absolute;
+    top: 48%;
+    left: 0px;
+    width: 100%;
+    height: 20px;
+    background:$bgred;
+}
+.txt {
+    width: 1050px;
+    height: 120px;
+    display: flex;
+    margin: auto;
+    position: relative;
+    margin-top: 20px;
+}
+.txt::after {
+    content: '';
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    bottom: 0px;
+    background-color: gray;
+}
+.txt .left {
+    width: 50%;
+}
+.txt .left h3 {
+   margin-bottom: 10px;
+   font-size: 20px;
+}
+.txt .left p {
+   margin-bottom: 5px;
+   font-size: 13px;
+   width: 100%;
+}
+
+.txt .right h3 {
+   margin-bottom: 10px;
+   font-size: 20px;
+}
+.txt .right {
+    width :50%;
+    margin-left: 160px;
+}
+.txt .right p {
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+.content {
+    width: 1050px;
+    height: 100%;
+    margin :auto;
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.content::after {
+    content: '';
+    width: 70%;
+    height: 5px;
+    position: absolute;
+    bottom: -200px;
+    background-color: gray;
+}
+.map {
+    width: 50%;
+    height: 400px;
+   margin-left: -100px;
+   margin :auto;
+}
+.map iframe {
+    width: 370px;
+    height: 370px;
+    margin-left: 0px;
+}
+.adress {
+    width: 50%;
+    margin :auto;
+    margin-top: 0px;
+    margin-left: 0px;
+
+}
+.adress h1 {
+    text-align: center;
+}
+.box {
+    display: flex;
+    margin-left: -70px;
+}
+.child {
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 50%;
+}
+.adress p {
+    margin-left: 50px;
+    margin-bottom: 10px;
+    width: 100%;
+}
